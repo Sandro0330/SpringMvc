@@ -1,11 +1,16 @@
 package br.com.sandro.mvc.mudi.dto; //(dto)Data Transfer Object
 
+import javax.validation.constraints.NotBlank; // não aceita campo String ser vazio ou nulo
+
 import br.com.sandro.mvc.mudi.model.Pedido;
 
 public class RequesicaoNovoPedido {
 
+	@NotBlank
 	private String nomeProduto;
+	@NotBlank
 	private String urlProduto;
+	@NotBlank
 	private String urlImagem;
 	private String descricao;
 
