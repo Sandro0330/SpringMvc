@@ -13,7 +13,7 @@ import javax.persistence.Id;
 public class Pedido {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
 	private String nomeProduto;
 	private BigDecimal valorNegociado;
