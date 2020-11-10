@@ -4,7 +4,7 @@ import javax.validation.constraints.NotBlank; // não aceita campo String ser va
 
 import br.com.sandro.mvc.mudi.model.Pedido;
 
-public class RequesicaoNovoPedido {
+public class RequisicaoNovoPedido {
 
 	@NotBlank
 	private String nomeProduto;
