@@ -3,6 +3,7 @@ package br.com.sandro.mvc.mudi.dto; //(dto)Data Transfer Object
 import javax.validation.constraints.NotBlank; // não aceita campo String ser vazio ou nulo
 
 import br.com.sandro.mvc.mudi.model.Pedido;
+import br.com.sandro.mvc.mudi.model.StatusPedido;
 
 public class RequisicaoNovoPedido {
 
@@ -52,6 +53,7 @@ public class RequisicaoNovoPedido {
 		pedido.setNomeProduto(nomeProduto);
 		pedido.setUrlProduto(urlProduto);
 		pedido.setUrlImagem(urlImagem);
+		pedido.setStatus(StatusPedido.AGUARDANDO);
 		return pedido;
 	}
 
