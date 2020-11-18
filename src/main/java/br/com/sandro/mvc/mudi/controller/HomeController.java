@@ -32,5 +32,4 @@ public class HomeController {
 		model.addAttribute("pedidos", pedidos);
 		return "home";
 	}
-	
 }
