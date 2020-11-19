@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Pedido {
 
@@ -22,6 +24,16 @@ public class Pedido {
 	private String nomeProduto;
 	private BigDecimal valorNegociado;
 	private LocalDate dataEntrega;
+	private String urlProduto;
+	private String urlImagem;
+	private String descricao;
+	
+	@Enumerated(EnumType.STRING)
+	private StatusPedido status;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
+	private User user;
 
 	public Long getId() {
 		return id;
@@ -38,16 +50,6 @@ public class Pedido {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
-	private String urlProduto;
-	private String urlImagem;
-	private String descricao;
-
-	@Enumerated(EnumType.STRING)
-	private StatusPedido status;
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	private User user;
 
 	public String getNomeProduto() {
 		return nomeProduto;
