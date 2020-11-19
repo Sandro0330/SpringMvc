@@ -1,37 +1,70 @@
 <html>
 	<head th:replace="~{base :: head}"> </head>
-	<body>
+	<body onload="onLoad()">
 		<div th:replace="~{base :: logo}"></div>
-		<div class="container">
-			<div th:replace="~{base :: titulo('Últimos Pedidos')}" ></div>
+		
+		<div class="container" id="ofertas">
+			<div th:replace="~{base :: titulo('Faça sua oferta')}" ></div>
 						
-			<div class="card mb-3" th:each="pedido : ${pedidos}">			
-				
-				<div class="card-header alert-dark" th:text="${pedido.nomeProduto}">Nome do produto</div>							
+			<div class="card mb-3" v-for="pedido in pedidos">							
+				<div class="card-header alert-dark" > {{pedido.nomeProduto}}</div>							
 								
 				<div class="card-body">
 					<div class="row">
 						<div class="col-12 col-sm-8 mb-3">
 							<div class="row">	
-								<div class="col-md-5">Valor: <span th:if="${pedido.valorNegociado} != null" th:text="${'R$ ' + #numbers.formatDecimal(pedido.valorNegociado,3,2,'COMMA')}">200,99</span> </div>
-								<div class="col-md-7">Data de entrega: <span th:text="${#temporals.format(pedido.dataEntrega, 'dd/MMM/yyyy ')}">10/02/2020</span> </div>
+								<div class="col-md-5">Valor: <input/></div>
+								<div class="col-md-7">Data de entrega: <input /> </div>
 							</div>
 							<div>Produto</div>
-							<div><input class="form-control" th:value="${pedido.urlProduto}" value="url do produto"/> url do produto</div>
+							<div><a v-bind:href="pedido.urlProduto">{{pedido.nomeProduto}}</a></div>
 						
 							<div>Descrição</div>
 							<div>
-								<textarea class="form-control" th:text="${pedido.descricao}">descrição do produto</textarea>
+								<textarea class="form-control">{{pedido.descricao}}</textarea>
 							</div>
 						</div>	
 						<div class="col-12 col-sm-4">
 							<div>
-								<img class="img-thumbnail" th:src="${pedido.urlImagem}" src=""/>
+								<img class="img-thumbnail" v-bind:src="pedido.urlImagem"/>
 							</div>
 						</div>	
 					</div>	
 				</div>	
 			</div>
 		</div>
+		<script type="text/javascript">
+			
+			function onLoad() {
+				var app = new Vue({
+					el : '#ofertas',
+					data : {
+						pedidos : [
+						    {
+						        "id" : 17,
+						        "nomeProduto" : "Wireless Earbuds TaoTronics",
+						        "valorNegociado" : null,
+						        "dataDaEntrega" : null,
+						        "urlProduto" : "https://www.amazon.com/TaoTronics-SoundLiberty-79-Technology-Waterproof/dp/B08397W1F7/ref=gbps_img_m-9_475e_ff9c5f1b?smid=AAJVIARPZY8SB&pf_rd_p=5d86def2-ec10-4364-9008-8fbccf30475e&pf_rd_s=merchandised-search-9&pf_rd_t=101&pf_rd_i=15529609011&pf_rd_m=ATVPDKIKX0DER&pf_rd_r=WD9HGMRTX91GNP8DKA4Z",
+						        "urlImagem" : "https://images-na.ssl-images-amazon.com/images/I/51SgO0fSIuL._AC_SL1300_.jpg",
+						        "descricao" : "descrição Wireless Earbuds TaoTronics",
+						        "status" : "AGUARDANDO"
+						    },
+						    {
+						        "id" : 13,
+						        "nomeProduto" : "Notebook Acer Aspire 5 A515-54G-73Y1 Intel Core I7 8GB 512GB SSD MX250 15,6' Endless Os",
+						        "valorNegociado" : null,
+						        "dataDaEntrega" : null,
+						        "urlProduto" : "https://www.amazon.com.br/Notebook-Acer-Aspire-A515-54G-73Y1-Endless/dp/B08JD7SWYZ?ref_=Oct_DotdC_f7mkm23_3_cfb03a28&pf_rd_p=1e6f4e66-32ff-5418-84e6-e89df32945cc&pf_rd_s=merchandised-search-8&pf_rd_t=101&pf_rd_i=16364755011&pf_rd_m=A1ZZFT5FULY4LN&pf_rd_r=BC4E8NTW96D7V65W7XBH&pf_rd_r=BC4E8NTW96D7V65W7XBH&pf_rd_p=1e6f4e66-32ff-5418-84e6-e89df32945cc",
+						        "urlImagem" : "https://images-na.ssl-images-amazon.com/images/I/51ROAonuCJL._AC_SL1000_.jpg",
+						        "descricao" : "o teclado numérico integrado do idepad S145 garante mais rapidez e ergonomia na sua digitação, principalmente para trabalhar mais facilmente com cálculos e planilhas ",
+						        "status" : "AGUARDANDO"
+						    } 
+						]  
+					}
+				});
+			}
+		</script> 
+		<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 	</body>
 </html>

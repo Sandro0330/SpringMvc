@@ -1,4 +1,4 @@
-package br.com.sandro.mvc.mudi.controller;
+ package br.com.sandro.mvc.mudi.controller;
 
 
 import java.security.Principal;
